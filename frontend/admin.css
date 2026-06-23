@@ -1,7 +1,3 @@
-/* ============================================
-   ADMIN PANEL - Neumorphic Dark Theme
-   ============================================ */
-
 :root {
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -21,7 +17,7 @@
   --shadow-flat-sm: 5px 5px 10px rgba(163, 177, 198, 0.5), -5px -5px 10px rgba(255, 255, 255, 0.9);
   --shadow-pressed: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
   --shadow-pressed-sm: inset 3px 3px 6px rgba(163, 177, 198, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
-  
+
   --shadow-glow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.8), 0 0 0 2px var(--text-accent);
 }
 
@@ -42,11 +38,13 @@
   --shadow-flat-sm: 5px 5px 10px rgba(19, 26, 37, 0.7), -5px -5px 10px rgba(41, 56, 81, 0.7);
   --shadow-pressed: inset 5px 5px 10px rgba(19, 26, 37, 0.8), inset -5px -5px 10px rgba(41, 56, 81, 0.8);
   --shadow-pressed-sm: inset 3px 3px 6px rgba(19, 26, 37, 0.7), inset -3px -3px 6px rgba(41, 56, 81, 0.7);
-  
+
   --shadow-glow: inset 4px 4px 8px rgba(19, 26, 37, 0.8), inset -4px -4px 8px rgba(41, 56, 81, 0.8), 0 0 0 2px var(--text-accent);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -68,7 +66,7 @@ body {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -76,7 +74,7 @@ body {
 }
 
 [data-theme="dark"] .wymec-admin-header {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .wymec-admin-header h1 {
@@ -97,8 +95,17 @@ body {
   padding: 20px 32px;
   margin-bottom: 20px;
 }
-.navbar-left { display: flex; align-items: center; gap: 12px; }
-.navbar-right { display: flex; gap: 16px; }
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 16px;
+}
 
 .navbar-logo {
   margin: 0;
@@ -137,6 +144,7 @@ body {
 .wymec-nav-btn.danger {
   color: var(--danger);
 }
+
 .wymec-nav-btn.danger:hover {
   color: #f87171;
 }
@@ -149,14 +157,16 @@ body {
 }
 
 /* Dashboard Metrics */
-.wymec-dashboard-grid, .wymec-metrics-grid {
+.wymec-dashboard-grid,
+.wymec-metrics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
 }
 
-.wymec-metric-card, .wymec-metric-box {
+.wymec-metric-card,
+.wymec-metric-box {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -188,7 +198,8 @@ body {
 }
 
 /* Sections */
-.wymec-section, .wymec-card {
+.wymec-section,
+.wymec-card {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -199,7 +210,8 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.wymec-section-header, .card-header {
+.wymec-section-header,
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,8 +272,13 @@ body {
   box-shadow: var(--shadow-pressed-sm);
 }
 
-.action-btn.edit { color: var(--text-accent); }
-.action-btn.delete { color: var(--danger); }
+.action-btn.edit {
+  color: var(--text-accent);
+}
+
+.action-btn.delete {
+  color: var(--danger);
+}
 
 /* Table */
 .table-container {
@@ -276,10 +293,11 @@ body {
   border-collapse: collapse;
 }
 
-.wymec-table th, .wymec-table td {
+.wymec-table th,
+.wymec-table td {
   padding: 16px;
   text-align: left;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .wymec-table tr:last-child td {
@@ -399,7 +417,8 @@ textarea.wymec-input {
 }
 
 /* Empty State / Loading */
-.loading-state, .loading-spinner {
+.loading-state,
+.loading-spinner {
   text-align: center;
   padding: 40px;
   color: var(--text-muted);
@@ -410,7 +429,8 @@ textarea.wymec-input {
   gap: 12px;
 }
 
-.wymec-empty-box, .empty-state {
+.wymec-empty-box,
+.empty-state {
   text-align: center;
   padding: 60px 20px;
   color: var(--text-muted);
@@ -442,23 +462,39 @@ textarea.wymec-input {
 }
 
 @keyframes pulse-green {
-  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
-.lucide-loader { animation: spin 2s linear infinite; }
+
+.lucide-loader {
+  animation: spin 2s linear infinite;
+}
 
 /* Login Customizations */
 #loginOverlay {
   background: var(--bg-body);
 }
 
-#loginOverlay > div {
+#loginOverlay>div {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -494,9 +530,11 @@ textarea.wymec-input {
   display: flex;
   align-items: center;
 }
+
 .theme-switch-wrapper input {
   display: none;
 }
+
 .theme-switch {
   position: relative;
   width: 68px;
@@ -512,19 +550,23 @@ textarea.wymec-input {
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
+
 .theme-switch i {
   color: var(--text-muted);
   z-index: 1;
   transition: color 0.3s ease;
 }
+
 .theme-switch .icon-sun {
   width: 16px;
   height: 16px;
 }
+
 .theme-switch .icon-moon {
   width: 14px;
   height: 14px;
 }
+
 .switch-handle {
   position: absolute;
   top: 4px;
@@ -537,12 +579,15 @@ textarea.wymec-input {
   transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
   z-index: 2;
 }
-.theme-switch-wrapper input:checked + .theme-switch .switch-handle {
+
+.theme-switch-wrapper input:checked+.theme-switch .switch-handle {
   transform: translateX(32px);
 }
-.theme-switch-wrapper input:checked + .theme-switch .icon-moon {
+
+.theme-switch-wrapper input:checked+.theme-switch .icon-moon {
   color: var(--text-primary);
 }
-.theme-switch-wrapper input:not(:checked) + .theme-switch .icon-sun {
+
+.theme-switch-wrapper input:not(:checked)+.theme-switch .icon-sun {
   color: var(--text-primary);
 }
