@@ -1,0 +1,22 @@
+{
+  "name": "aws-chatbot",
+  "version": "1.0.0",
+  "description": "Premium AWS Bedrock RAG chatbot with admin panel",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "cd backend && npm run dev",
+    "start-frontend": "npx -y http-server ./frontend -p 5173 -c-1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1"
+  }
+}

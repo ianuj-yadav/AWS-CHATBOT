@@ -1,0 +1,4 @@
+{
+  "watch": ["."],
+  "ignore": ["db/*", "*.sqlite", "*.db", "node_modules/*"]
+}

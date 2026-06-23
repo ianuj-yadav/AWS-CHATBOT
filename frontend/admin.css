@@ -1,0 +1,548 @@
+/* ============================================
+   ADMIN PANEL - Neumorphic Dark Theme
+   ============================================ */
+
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Glass-Neumorphic Light Base */
+  --bg-body: linear-gradient(135deg, #e0e5ec 0%, #f0f0f3 100%);
+  --bg-app: #e0e5ec;
+  --bg-card: rgba(224, 229, 236, 0.65);
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-accent: #3182ce;
+  --danger: #e53e3e;
+  --success: #38a169;
+
+  /* Neumorphic Light Shadows */
+  --shadow-flat: 8px 8px 16px rgba(163, 177, 198, 0.6), -8px -8px 16px rgba(255, 255, 255, 0.8);
+  --shadow-flat-sm: 5px 5px 10px rgba(163, 177, 198, 0.5), -5px -5px 10px rgba(255, 255, 255, 0.9);
+  --shadow-pressed: inset 5px 5px 10px rgba(163, 177, 198, 0.6), inset -5px -5px 10px rgba(255, 255, 255, 0.8);
+  --shadow-pressed-sm: inset 3px 3px 6px rgba(163, 177, 198, 0.5), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
+  
+  --shadow-glow: inset 4px 4px 8px rgba(163, 177, 198, 0.6), inset -4px -4px 8px rgba(255, 255, 255, 0.8), 0 0 0 2px var(--text-accent);
+}
+
+[data-theme="dark"] {
+  /* Glass-Neumorphic Dark Base */
+  --bg-body: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --bg-app: #1e293b;
+  --bg-card: rgba(30, 41, 59, 0.65);
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #38bdf8;
+  --danger: #ef4444;
+  --success: #10b981;
+
+  /* Neumorphic Dark Shadows */
+  --shadow-flat: 8px 8px 16px rgba(19, 26, 37, 0.8), -8px -8px 16px rgba(41, 56, 81, 0.8);
+  --shadow-flat-sm: 5px 5px 10px rgba(19, 26, 37, 0.7), -5px -5px 10px rgba(41, 56, 81, 0.7);
+  --shadow-pressed: inset 5px 5px 10px rgba(19, 26, 37, 0.8), inset -5px -5px 10px rgba(41, 56, 81, 0.8);
+  --shadow-pressed-sm: inset 3px 3px 6px rgba(19, 26, 37, 0.7), inset -3px -3px 6px rgba(41, 56, 81, 0.7);
+  
+  --shadow-glow: inset 4px 4px 8px rgba(19, 26, 37, 0.8), inset -4px -4px 8px rgba(41, 56, 81, 0.8), 0 0 0 2px var(--text-accent);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  background: var(--bg-body);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Header */
+.wymec-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="dark"] .wymec-admin-header {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.wymec-admin-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Navigation Buttons */
+.wymec-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  margin-bottom: 20px;
+}
+.navbar-left { display: flex; align-items: center; gap: 12px; }
+.navbar-right { display: flex; gap: 16px; }
+
+.navbar-logo {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wymec-nav-btn {
+  background: var(--bg-app);
+  color: var(--text-secondary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-flat-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wymec-nav-btn:hover {
+  color: var(--text-primary);
+}
+
+.wymec-nav-btn:active {
+  box-shadow: var(--shadow-pressed-sm);
+}
+
+.wymec-nav-btn.danger {
+  color: var(--danger);
+}
+.wymec-nav-btn.danger:hover {
+  color: #f87171;
+}
+
+/* Layout */
+.wymec-admin-container {
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+}
+
+/* Dashboard Metrics */
+.wymec-dashboard-grid, .wymec-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.wymec-metric-card, .wymec-metric-box {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-flat);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wymec-metric-label {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wymec-metric-value {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Sections */
+.wymec-section, .wymec-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow-flat);
+  margin-bottom: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.wymec-section-header, .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.wymec-section-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Primary Button */
+.wymec-btn-primary {
+  background: var(--bg-app);
+  color: var(--text-accent);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-flat-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wymec-btn-primary:hover {
+  color: #7dd3fc;
+}
+
+.wymec-btn-primary:active {
+  box-shadow: var(--shadow-pressed-sm);
+}
+
+.action-btn {
+  background: var(--bg-app);
+  border: none;
+  color: var(--text-secondary);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-flat-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:active {
+  box-shadow: var(--shadow-pressed-sm);
+}
+
+.action-btn.edit { color: var(--text-accent); }
+.action-btn.delete { color: var(--danger); }
+
+/* Table */
+.table-container {
+  border-radius: 16px;
+  box-shadow: var(--shadow-pressed);
+  padding: 16px;
+  overflow-x: auto;
+}
+
+.wymec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wymec-table th, .wymec-table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+}
+
+.wymec-table tr:last-child td {
+  border-bottom: none;
+}
+
+.wymec-table th {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.table-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Modal */
+.wymec-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 41, 59, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.wymec-modal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.wymec-modal {
+  background: var(--bg-app);
+  padding: 32px;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-flat);
+  transform: scale(0.95);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wymec-modal-overlay.open .wymec-modal {
+  transform: scale(1);
+}
+
+.wymec-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.wymec-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.wymec-modal-close {
+  background: var(--bg-app);
+  border: none;
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-flat-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.wymec-modal-close:active {
+  box-shadow: var(--shadow-pressed-sm);
+}
+
+.wymec-form-group {
+  margin-bottom: 24px;
+}
+
+.wymec-label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.wymec-input {
+  width: 100%;
+  background: var(--bg-app);
+  border: none;
+  color: var(--text-primary);
+  padding: 16px;
+  border-radius: 12px;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  box-shadow: var(--shadow-pressed);
+  transition: all 0.3s ease;
+}
+
+.wymec-input:focus {
+  outline: none;
+  box-shadow: var(--shadow-glow);
+}
+
+textarea.wymec-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Empty State / Loading */
+.loading-state, .loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.wymec-empty-box, .empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.live-badge {
+  color: var(--success);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  box-shadow: var(--shadow-pressed-sm);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.live-badge::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+  animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.lucide-loader { animation: spin 2s linear infinite; }
+
+/* Login Customizations */
+#loginOverlay {
+  background: var(--bg-body);
+}
+
+#loginOverlay > div {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-flat);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#loginForm input {
+  background: var(--bg-card) !important;
+  border: none !important;
+  box-shadow: var(--shadow-pressed) !important;
+  color: var(--text-primary) !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  margin-bottom: 20px !important;
+}
+
+#loginForm button {
+  background: var(--bg-app) !important;
+  color: var(--text-accent) !important;
+  box-shadow: var(--shadow-flat-sm) !important;
+  padding: 16px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+}
+
+#loginForm button:active {
+  box-shadow: var(--shadow-pressed-sm) !important;
+}
+
+/* Glass-Neumorphic Theme Toggle Switch */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+.theme-switch-wrapper input {
+  display: none;
+}
+.theme-switch {
+  position: relative;
+  width: 68px;
+  height: 36px;
+  background: var(--bg-card);
+  border-radius: 36px;
+  box-shadow: var(--shadow-pressed);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.theme-switch i {
+  color: var(--text-muted);
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+.theme-switch .icon-sun {
+  width: 16px;
+  height: 16px;
+}
+.theme-switch .icon-moon {
+  width: 14px;
+  height: 14px;
+}
+.switch-handle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background: var(--bg-app);
+  border-radius: 50%;
+  box-shadow: var(--shadow-flat-sm);
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  z-index: 2;
+}
+.theme-switch-wrapper input:checked + .theme-switch .switch-handle {
+  transform: translateX(32px);
+}
+.theme-switch-wrapper input:checked + .theme-switch .icon-moon {
+  color: var(--text-primary);
+}
+.theme-switch-wrapper input:not(:checked) + .theme-switch .icon-sun {
+  color: var(--text-primary);
+}

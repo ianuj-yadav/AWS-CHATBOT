@@ -1,0 +1,12 @@
+{
+  "name": "frontend-vanilla",
+  "version": "1.0.0",
+  "description": "Vanilla JS Frontend for AWS Chatbot",
+  "scripts": {
+    "dev": "serve . -p 5173",
+    "start": "serve . -p 5173"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}

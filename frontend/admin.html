@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console</title>
+  <link rel="stylesheet" href="admin.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+  <!-- Login Overlay -->
+  <div id="loginOverlay"
+    style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #080c14; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div
+      style="background: #131d30; padding: 2rem; border-radius: 12px; width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); text-align: center;">
+      <h2 style="color: #e2e8f0; margin-bottom: 1.5rem; font-family: 'Inter', sans-serif;">Admin Login</h2>
+      <form id="loginForm">
+        <input type="text" id="loginUsername" placeholder="Username" required
+          style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #334155; background: #0e1420; color: white;">
+        <input type="password" id="loginPassword" placeholder="Password" required
+          style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #334155; background: #0e1420; color: white;">
+        <button type="submit"
+          style="width: 100%; padding: 10px; background: #4f46e5; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; display:flex; align-items:center; justify-content:center; gap:8px;"><i data-lucide="log-in" style="width:18px;height:18px;"></i> Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="wymec-admin-layout">
+
+    <!-- Top Navigation Bar -->
+    <nav class="wymec-navbar">
+      <div class="navbar-left">
+        <h1 class="navbar-logo"><i data-lucide="layout-dashboard"></i> Admin Console</h1>
+      </div>
+      <div class="navbar-right" style="align-items: center; gap: 16px;">
+        <button class="wymec-nav-btn danger" id="openClearDbModalBtn" style="margin-right: 8px;"><i data-lucide="database" style="width:16px;height:16px;"></i> Clear Database</button>
+        <div class="theme-switch-wrapper" title="Toggle Light/Dark Mode">
+          <input type="checkbox" id="themeToggleCheckbox" />
+          <label class="theme-switch" for="themeToggleCheckbox">
+            <i data-lucide="sun" class="icon-sun"></i>
+            <i data-lucide="moon" class="icon-moon"></i>
+            <div class="switch-handle"></div>
+          </label>
+        </div>
+        <button class="wymec-nav-btn" onclick="window.location.href='/'"><i data-lucide="arrow-left" style="width:16px;height:16px;"></i> Back to Chatbot</button>
+        <button class="wymec-nav-btn danger" id="logoutBtn"><i data-lucide="log-out" style="width:16px;height:16px;"></i> Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="wymec-main">
+
+      <!-- Metrics Header -->
+      <section class="wymec-metrics-grid" id="metricsGrid">
+        <div class="wymec-metric-box">
+          <span class="wymec-metric-label"><i data-lucide="database" style="width:16px;height:16px;"></i> Total FAQs</span>
+          <span class="wymec-metric-value" id="metricTotal">0</span>
+        </div>
+        <div class="wymec-metric-box">
+          <span class="wymec-metric-label"><i data-lucide="activity" style="width:16px;height:16px;"></i> System Health</span>
+          <span class="wymec-metric-value" style="color: var(--success);">Online</span>
+        </div>
+      </section>
+
+      <!-- Manage FAQ Database -->
+      <section class="wymec-card">
+        <div class="card-header">
+          <h2 class="wymec-section-title"><i data-lucide="folder-open"></i> Manage FAQ Database</h2>
+          <button class="wymec-btn-primary" id="openAddModalBtn"><i data-lucide="plus" style="width:18px;height:18px;"></i> Add Custom FAQ</button>
+        </div>
+
+        <div class="table-container">
+          <table class="wymec-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Question</th>
+                <th>Answer Preview</th>
+                <th style="width: 120px;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="faqTableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+          <div id="loadingIndicator" class="loading-state" style="display: none;"><i data-lucide="loader" class="lucide-loader"></i> Loading FAQs...</div>
+          <div id="emptyState" class="wymec-empty-box" style="display: none;"><i data-lucide="inbox" style="width:32px;height:32px;margin-bottom:10px;display:block;margin:0 auto 10px;opacity:0.5;"></i> No FAQs found in the database.</div>
+        </div>
+      </section>
+
+      <!-- Live Chat History -->
+      <section class="wymec-card" style="margin-top: 2rem;">
+        <div class="card-header">
+          <h2 class="wymec-section-title" style="display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="message-square"></i> Live Chat History
+            <span class="live-badge">Live</span>
+          </h2>
+        </div>
+        
+        <div class="table-container">
+          <table class="wymec-table">
+            <thead>
+              <tr>
+                <th style="width: 80px;">Time</th>
+                <th style="width: 120px;">IP Address</th>
+                <th style="width: 120px;">Browser/OS</th>
+                <th>User Message</th>
+                <th>AI Response Preview</th>
+              </tr>
+            </thead>
+            <tbody id="chatTableBody">
+              <!-- Dynamically populated rows -->
+            </tbody>
+          </table>
+          <div id="chatLoadingIndicator" class="loading-state" style="display: none;"><i data-lucide="loader" class="lucide-loader"></i> Loading chats...</div>
+          <div id="chatEmptyState" class="wymec-empty-box" style="display: none;"><i data-lucide="inbox" style="width:32px;height:32px;margin-bottom:10px;display:block;margin:0 auto 10px;opacity:0.5;"></i> No chat history available.</div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FAQ Modal Overlay -->
+  <div class="wymec-modal-overlay" id="faqModal" style="display: none;">
+    <div class="wymec-modal">
+      <div class="wymec-modal-header">
+        <h2 id="modalTitle">Add Custom FAQ</h2>
+        <button class="wymec-modal-close" id="closeModalBtn">&times;</button>
+      </div>
+
+      <form id="faqForm">
+        <input type="hidden" id="faqId">
+
+        <div class="wymec-form-group">
+          <label class="wymec-label">Question</label>
+          <input type="text" class="wymec-input" id="faqQuestion" placeholder="e.g. How do I upgrade my plan?" required>
+        </div>
+
+        <div class="wymec-form-group">
+          <label class="wymec-label">Answer</label>
+          <textarea class="wymec-input" id="faqAnswer" rows="5" placeholder="Enter the detailed answer..."
+            required></textarea>
+        </div>
+
+        <button type="submit" class="wymec-btn-primary" id="saveFaqBtn"><i data-lucide="save" style="width:16px;height:16px;"></i> Save FAQ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Clear DB Modal Overlay -->
+  <div class="wymec-modal-overlay" id="clearDbModal" style="display: none;">
+    <div class="wymec-modal">
+      <div class="wymec-modal-header">
+        <h2 style="color: #ef4444; display: flex; align-items: center; gap: 8px;"><i data-lucide="alert-triangle"></i> Clear Database</h2>
+        <button class="wymec-modal-close" id="closeClearDbModalBtn">&times;</button>
+      </div>
+
+      <div style="margin-bottom: 20px; font-size: 0.9rem; color: #94a3b8; line-height: 1.5;">
+        Select the databases you want to permanently clear. This action cannot be undone.
+      </div>
+
+      <div class="wymec-form-group" style="display:flex; flex-direction:column; gap:12px; margin-bottom: 24px;">
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-color);">
+          <input type="checkbox" id="clearFaqsCheckbox" style="width:18px; height:18px; accent-color: #ef4444;">
+          Clear FAQs Database (Also deletes LanceDB vectors)
+        </label>
+        
+        <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-color);">
+          <input type="checkbox" id="clearChatsCheckbox" style="width:18px; height:18px; accent-color: #ef4444;">
+          Clear Live Chat History
+        </label>
+      </div>
+
+      <button type="button" class="wymec-btn-primary" id="confirmClearDbBtn" style="width: 100%; background: #ef4444; color: white;"><i data-lucide="trash-2" style="width:16px;height:16px;"></i> Delete Selected Data</button>
+    </div>
+  </div>
+
+  <script src="admin.js?v=4"></script>
+</body>
+
+</html>

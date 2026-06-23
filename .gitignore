@@ -1,0 +1,7 @@
+node_modules/
+.env
+chatbot.sqlite
+chatbot.sqlite-journal
+lancedb_data/
+.DS_Store
+*.log
