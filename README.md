@@ -370,7 +370,7 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-**Anuj Yadav**
+Anuj Yadav
 
 GitHub: https://github.com/ianuj-yadav
 
